@@ -11,7 +11,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 import joblib
 import mlflow
 
-mlflow.set_tracking_uri("public_url")   # complete the code to set the MLflow tracking URI
+mlflow.set_tracking_uri("http://127.0.0.1:5000")   # complete the code to set the MLflow tracking URI
 mlflow.set_experiment("tourism_experiment")     # complete the code to set the MLflow experiment name (same as the dev experimentation cell)
 
 # Xtrain/Xtest/ytrain/ytest are downloaded from the previous job's artifact
@@ -20,20 +20,12 @@ Xtest = pd.read_csv("Xtest.csv")
 ytrain = pd.read_csv("ytrain.csv").squeeze()
 ytest = pd.read_csv("ytest.csv").squeeze()
 
-numeric_features = ["Age", 
-    "DurationOfPitch", 
-    "MonthlyIncome", 
-    "NumberOfFollowups", 
-    "NumberOfPersonVisiting", 
-    "NumberOfTrips", 
-    "PitchSatisfactionScore"]   # complete the code to list all numerical feature names (same as in prep.py)
+numeric_features = ["Age", "CityTier", "DurationOfPitch", "MonthlyIncome", "NumberOfFollowups",
+    "NumberOfPersonVisiting", "NumberOfTrips", "PitchSatisfactionScore",
+    "PreferredPropertyStar", "Passport", "OwnCar", "NumberOfChildrenVisiting",]   # complete the code to list all numerical feature names (same as in prep.py)
 
-categorical_features = ["TypeofContact", 
-    "Occupation", 
-    "Gender", 
-    "ProductPitched", 
-    "MaritalStatus", 
-    "Designation"]   # complete the code to list all categorical feature names (same as in prep.py)
+categorical_features = [ "TypeofContact", "Occupation", "Gender", "ProductPitched",
+    "MaritalStatus", "Designation",]   # complete the code to list all categorical feature names (same as in prep.py)
 
 # Set the class weight to handle class imbalance
 class_weight = ytrain.value_counts()[0] / ytrain.value_counts()[1]
