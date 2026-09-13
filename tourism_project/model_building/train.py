@@ -46,7 +46,7 @@ param_grid = {
     'xgbclassifier__colsample_bytree': [0.8, 1.0],    # Fraction of features sampled when building each tree.
     'xgbclassifier__colsample_bylevel': [0.8, 1.0],   # Fraction of features sampled at each tree level.
     'xgbclassifier__learning_rate': [0.01, 0.1, 0.2],       # Step size used during boosting. Smaller values may improve generalization but require more trees.
-    'xgbclassifier__reg_lambda': [[1, 5],          # L2 regularization strength. Higher values help reduce overfitting.
+    'xgbclassifier__reg_lambda': [1, 5],          # L2 regularization strength. Higher values help reduce overfitting.
 }
 # Model pipeline
 model_pipeline = make_pipeline(preprocessor, xgb_model)   # complete the code to build the model pipeline by chaining preprocessor and xgb_model
